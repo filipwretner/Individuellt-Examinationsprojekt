@@ -1,1 +1,5 @@
 # Individuellt-Examinationsprojekt
+
+Application name	Music Dashboard
+API key	ab50c12e76209c403b61bf439fdf938a
+Shared secret	e8837d2cf9cf4094dcc81c7f90c19779
