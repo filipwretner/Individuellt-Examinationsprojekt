@@ -3,7 +3,7 @@ import { MusicState } from '../Utilities/types';
 import { 
     fetchNewReleases,
     fetchTrendingMusic,
-    searchMusic,
+    fetchSearchResults,
     fetchArtistData,
     fetchArtistTopSongs,
     fetchAlbumData 
@@ -27,8 +27,8 @@ export const getTrendingMusic = createAsyncThunk("music/getTrending", async () =
     return await fetchTrendingMusic();
 });
 
-export const searchForMusic = createAsyncThunk("music/search", async ({ query, type }: { query: string, type: "artist" | "album" | "track" }) => {
-    return await searchMusic(query, type);
+export const searchForMusic = createAsyncThunk("music/search", async (query: string) => {
+    return await fetchSearchResults(query);
 });
 
 export const getArtistDetails = createAsyncThunk("music/getArtist", async (artist: string) => {
