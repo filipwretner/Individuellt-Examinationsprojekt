@@ -1,12 +1,16 @@
 export interface Song {
-    name: string;
+    title: string;
     artist: { name: string; };
 }
 
 export interface Album {
-    name: string;
+    title: string;
     artist: { name: string; };
     songs: { song: Song[] };
+}
+
+export interface Artist {
+    name: string;
 }
 
 export interface NewReleasesResponse {
