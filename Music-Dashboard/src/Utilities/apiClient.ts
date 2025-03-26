@@ -1,6 +1,13 @@
 const API_KEY = "";
 const BASE_URL = "https://ws.audioscrobbler.com/2.0/";
 
+export const fetchNewReleases = async () => {
+
+    const response = await fetch(
+        `${BASE_URL}?method=album.gettopalbums&api_key=${API_KEY}&format=json`
+    );
+    return response.json();
+}
 
 export const fetchTrendingMusic = async () => {
 
