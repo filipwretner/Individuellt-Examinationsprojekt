@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import './App.css';
 import AppRouter from "./Router/router";
-import Header from "./Components/Global/Header";
+import Header from "./Components/Global/header";
 
 const App: React.FC = () => {
   return (

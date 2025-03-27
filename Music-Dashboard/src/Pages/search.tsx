@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { searchForMusic } from "../Redux/musicSlice";
+import { searchForMusic } from "../Redux/Reducers/searchSlice";
 import { RootState, AppDispatch } from "../Redux/store";
 import SearchSongs from "../Components/Search/searchSongs";
 import SearchAlbums from "../Components/Search/searchAlbums";
@@ -12,7 +12,7 @@ const Search: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const [searchParams] = useSearchParams();
     const query = searchParams.get("query") || "";
-    const searchResults = useSelector((state: RootState) => state.music.searchResults);
+    const searchResults = useSelector((state: RootState) => state.search.searchResults);
 
     useEffect(() => {
         if (query) {

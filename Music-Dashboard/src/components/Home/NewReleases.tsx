@@ -1,24 +1,26 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSimilarSongs } from "../../Redux/musicSlice";
+import { getSimilarSongs } from "../../Redux//Reducers/homeSlice";
 import { RootState, AppDispatch } from "../../Redux/store";
 
-const SimilarSongs = () => {
+const SimilarSongs: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const similarSongs = useSelector((state: RootState) => state.music.similarSongs);
+    const similarSongs = useSelector((state: RootState) => state.home.similarSongs);
 
     useEffect(() => {
         dispatch(getSimilarSongs());
     }, [dispatch]);
+
+    console.log(similarSongs);
 
     return (
         <div>
             <h2>Liknande låtar</h2>
             {similarSongs ? (
                 <ul>
-                    {similarSongs.similartracks?.track?.slice(0, 10).map((song: any) => (
-                        <li key={song.id}>
-                            {song.name} {song.artists[0].name}
+                    {similarSongs.similartracks.track.slice(0, 10).map((song, index) => (
+                        <li key={index}>
+                            {song.name} - {song.artist.name}
                         </li>
                     ))}
                 </ul>

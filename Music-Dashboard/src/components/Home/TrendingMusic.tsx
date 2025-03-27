@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTrendingMusic } from "../../Redux/musicSlice";
+import { getTrendingMusic } from "../../Redux/Reducers/homeSlice";
 import { RootState, AppDispatch } from "../../Redux/store";
 
 const TrendingMusic: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const trendingMusic = useSelector((state: RootState) => state.music.trending);
+    const trendingMusic = useSelector((state: RootState) => state.home.trending);
 
     useEffect(() => {
         dispatch(getTrendingMusic());
