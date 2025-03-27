@@ -10,10 +10,8 @@ const ArtistDetails: React.FC = () => {
 
     const { id } = useParams();
     const dispatch = useDispatch<AppDispatch>();
-    const artist = useSelector((state: RootState) => state.artist.artistAlbums);
+    const artistAlbums = useSelector((state: RootState) => state.artist.artistAlbums);
     const artistSongs = useSelector((state: RootState) => state.artist.artistSongs);
-
-    console.log(artist);
 
     useEffect(() => {
 
@@ -25,15 +23,9 @@ const ArtistDetails: React.FC = () => {
 
     return (
         <div>
-            {artist ? (
-                <>
-                  <h2>{artist.name}</h2>
-                  <ArtistSongs songs={artistSongs} />
-                  <ArtistAlbums albums={artist.albums} />
-                </>
-            ) : (
-                <p>Laddar...</p>
-            )}
+            <h2>{id}</h2> 
+            <ArtistSongs songs={artistSongs} />
+            <ArtistAlbums albums={artistAlbums} /> 
         </div>
     );
 };
