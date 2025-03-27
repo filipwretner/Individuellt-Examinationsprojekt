@@ -1,17 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { MusicState } from '../../Utilities/types';
 import { fetchSearchResults } from "../../Utilities/API/searchApi";
 
 
-const initialState: MusicState = {
-  similarSongs: null,
-  trending: null,
-  searchResults: null,
-  artist: null,
-  artistSongs: null,
-  album: null,
-  status: "idle",
-}
+const initialState = {
+    searchResults: {
+        tracks: [],
+        albums: [],
+        artists: [],
+    },
+    status: "idle",
+};
 
 export const searchForMusic = createAsyncThunk("search/searchForMusic", async (query: string) => {
     return await fetchSearchResults(query);
@@ -22,10 +20,18 @@ const searchSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(searchForMusic.fulfilled, (state, action) => {
-            state.searchResults = action.payload;
-        });
+        builder
+            .addCase(searchForMusic.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(searchForMusic.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.searchResults = action.payload;
+            })
+            .addCase(searchForMusic.rejected, (state) => {
+                state.status = "failed";
+            });
     },
-});
+});;
 
 export default searchSlice.reducer;

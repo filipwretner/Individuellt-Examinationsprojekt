@@ -12,7 +12,8 @@ const Search: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const [searchParams] = useSearchParams();
     const query = searchParams.get("query") || "";
-    const searchResults = useSelector((state: RootState) => state.search.searchResults);
+    const { tracks, albums, artists } = useSelector((state: RootState) => state.search.searchResults);
+    const status  = useSelector((state: RootState) => state.search.status);
 
     useEffect(() => {
         if (query) {
@@ -21,18 +22,23 @@ const Search: React.FC = () => {
     }, [query, dispatch]);
 
     return (
-        <div>
-            <h1>Sökresultat för: "{query}"</h1>
-            {searchResults ? (
-                <div>
-                    <SearchSongs songs={searchResults.songs?.song || []} />
-                    <SearchAlbums albums={searchResults.albums?.album || []} />
-                    <SearchArtists artists={searchResults.artists?.artist || []} />
-                </div>
+        <div className="container mx-auto p-4">
+            <h1 className="text-2xl font-bold mb-4">Sökresultat för: "{query}"</h1>
+            {status === "loading" ? (
+                <p className="text-gray-500">Laddar...</p>
             ) : (
-                <p>Inga sökresultat hittades</p>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div>
+                        <SearchSongs songs={tracks} />
+                    </div>
+                    <div>
+                        <SearchAlbums albums={albums} />
+                    </div>
+                    <div>
+                        <SearchArtists artists={artists} />
+                    </div>
+                </div>
             )}
-
         </div>
     );
 };
