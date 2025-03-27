@@ -13,7 +13,7 @@ const SimilarSongs = () => {
 
     return (
         <div>
-            <h2>Nya Album</h2>
+            <h2>Liknande låtar</h2>
             {similarSongs ? (
                 <ul>
                     {similarSongs.similartracks?.track?.slice(0, 10).map((song: any) => (
