@@ -2,21 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Album } from "../../Utilities/types";
 
-const SearchAlbums: React.FC<{ albums: Album[] }> = ({ albums }) => {
+const ArtistAlbums: React.FC<{ albums: Album[] }> = ({ albums }) => {
     return (
         <div>
-            <h2>Album</h2>
-            <ul>
-                {albums.slice(0, 6).map((album, index) => (
-                    <li key={index}>
+            <h2>Albums</h2>
+            <div>
+                {albums.map((album, index) => (
+                    <div key={index}>
                         <Link to={`/album/${encodeURIComponent(album.title)}`}>
                             {album.title} - {album.artist.name}
                         </Link>
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };
 
-export default SearchAlbums;
+export default ArtistAlbums;

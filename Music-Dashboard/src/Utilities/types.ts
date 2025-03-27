@@ -1,5 +1,5 @@
 export interface Song {
-    title: string;
+    name: string;
     artist: { name: string; };
 }
 
@@ -13,17 +13,17 @@ export interface Artist {
     name: string;
 }
 
-export interface NewReleasesResponse {
-    albums: { album: Album[] };
+export interface SimilarSongsResponse {
+    similartracks: { track: Song[] };
 }
 
-export interface TrendingMusicRespnse {
-    songs: { song: Song[] };
+export interface TrendingMusicResponse {
+    tracks: { track: Song[] };
 }
 
 export interface MusicState {
-    newReleases: NewReleasesResponse | null;
-    trending: TrendingMusicRespnse | null;
+    similarSongs: SimilarSongsResponse | null;
+    trending: TrendingMusicResponse | null;
     searchResults: any;
     artist: any;
     artistSongs: any;
