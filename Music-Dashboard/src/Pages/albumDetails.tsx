@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../Redux/store";
 import { getAlbumDetails } from "../Redux/Reducers/albumSlice";
 import { Song } from "../Utilities/types";
+import AddButton from "../Components/Global/AddButton";
 
 const AlbumDetails: React.FC = () => {
 
@@ -26,9 +27,10 @@ const AlbumDetails: React.FC = () => {
                     <img src={album.cover} alt={album.title} />
                     <ul>
                         {album.songs.map((song: Song, index: number) => (
-                            <li key={index}>
-                                {song.name}
-                            </li>
+                        <li key={index} className="p-4 border rounded-lg hover:shadow-lg transition-shadow">
+                        <p className="font-semibold text-gray-700">{song.name}</p>
+                        <AddButton song={song} />
+                    </li>
                         ))}
                     </ul>
                 </>
