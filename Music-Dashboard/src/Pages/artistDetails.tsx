@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../Redux/store";
-import { getArtistDetails, getArtistTopSongs } from "../Redux/Reducers/artistSlice";
+import { getArtistAlbums, getArtistSongs } from "../Redux/Reducers/artistSlice";
 import ArtistSongs from "../Components/ArtistDetails/artistSongs";
 import ArtistAlbums from "../Components/ArtistDetails/artistAlbums";
 
@@ -13,11 +13,13 @@ const ArtistDetails: React.FC = () => {
     const artist = useSelector((state: RootState) => state.artist.artistAlbums);
     const artistSongs = useSelector((state: RootState) => state.artist.artistSongs);
 
+    console.log(artist);
+
     useEffect(() => {
 
         if (id) {
-            dispatch(getArtistDetails(id));
-            dispatch(getArtistTopSongs(id));
+            dispatch(getArtistAlbums(id));
+            dispatch(getArtistSongs(id));
         }
     }, [id, dispatch]);
 

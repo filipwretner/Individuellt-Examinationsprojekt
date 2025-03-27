@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { MusicState } from '../../Utilities/types';
-import { fetchArtistData, fetchArtistTopSongs } from "../../Utilities/API/artistApi";
+import { fetchArtistAlbums, fetchArtistSongs } from "../../Utilities/API/artistApi";
 
 
 const initialState: MusicState = {
@@ -13,12 +13,12 @@ const initialState: MusicState = {
   status: "idle",
 }
 
-export const getArtistDetails = createAsyncThunk("artist/getArtistDetails", async (artist: string) => {
-    return await fetchArtistData(artist);
+export const getArtistAlbums = createAsyncThunk("artist/getArtistAlbums", async (artist: string) => {
+    return await fetchArtistAlbums(artist);
 });
 
-export const getArtistTopSongs = createAsyncThunk("artist/getArtistTopSongs", async (artist: string) => {
-    return await fetchArtistTopSongs(artist);
+export const getArtistSongs = createAsyncThunk("artist/getArtistSongs", async (artist: string) => {
+    return await fetchArtistSongs(artist);
 });
 
 const artistSlice = createSlice({
@@ -27,10 +27,10 @@ const artistSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(getArtistDetails.fulfilled, (state, action) => {
+            .addCase(getArtistAlbums.fulfilled, (state, action) => {
                 state.artistAlbums = action.payload;
             })
-            .addCase(getArtistTopSongs.fulfilled, (state, action) => {
+            .addCase(getArtistSongs.fulfilled, (state, action) => {
                 state.artistSongs = action.payload;
             });
     },

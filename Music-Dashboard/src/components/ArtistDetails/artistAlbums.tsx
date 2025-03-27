@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Album } from "../../Utilities/types";
 
-const ArtistAlbums: React.FC<{ albums: Album[] }> = ({ albums }) => {
+const ArtistAlbums: React.FC<{ albums: Album[] | null }> = ({ albums }) => {
     return (
         <div>
             <h2>Albums</h2>
             <div>
-            {albums.length > 0 ? (
+                {Array.isArray(albums) && albums.length > 0 ? (
                     albums.map((album, index) => (
                         <div key={index}>
                             <Link to={`/album/${encodeURIComponent(album.name)}`}>
