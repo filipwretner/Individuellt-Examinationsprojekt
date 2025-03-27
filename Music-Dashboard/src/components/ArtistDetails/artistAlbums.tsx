@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Album } from "../../Utilities/types";
 
 const ArtistAlbums: React.FC<{ albums: Album[] }> = ({ albums }) => {
@@ -8,7 +9,9 @@ const ArtistAlbums: React.FC<{ albums: Album[] }> = ({ albums }) => {
             <div>
                 {albums.map((album, index) => (
                     <div key={index}>
-                        <h3>{album.title}</h3>
+                        <Link to={`/album/${encodeURIComponent(album.title)}`}>
+                            {album.title} - {album.artist.name}
+                        </Link>
                     </div>
                 ))}
             </div>
