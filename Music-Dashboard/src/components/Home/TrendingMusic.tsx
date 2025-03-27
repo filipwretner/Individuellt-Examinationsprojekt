@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTrendingMusic } from "../../Redux/Reducers/homeSlice";
 import { RootState, AppDispatch } from "../../Redux/store";
+import AddButton from "../Global/AddButton";
 
 const TrendingMusic: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -23,6 +24,7 @@ const TrendingMusic: React.FC = () => {
                     >
                         <p className="font-semibold text-gray-700">{song.name}</p>
                         <p className="text-sm text-gray-500">{song.artist.name}</p>
+                        <AddButton song={song} />
                     </li>
                 ))}
             </ul>

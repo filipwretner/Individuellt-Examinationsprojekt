@@ -1,13 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
-
-interface Song {
-    id: string;
-    artist: string;
-    songTitle: string;
-    albumTitle: string;
-    cover: string;
-}
+import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { Song } from "../../Utilities/types";
 
 interface PlaylistState {
     songs: Song[];
@@ -15,19 +8,22 @@ interface PlaylistState {
 
 const initialState: PlaylistState = {
     songs: [],
-}
+};
 
 const playlistSlice = createSlice({
-    name: 'playlist',
+    name: "playlist",
     initialState,
     reducers: {
         addToPlaylist: (state, action: PayloadAction<Song>) => {
-            state.songs.push(action.payload);
+            const exists = state.songs.find(song => song.name === action.payload.name && song.artist.name === action.payload.artist.name);
+            if (!exists) {
+                state.songs.push(action.payload);
+            }
         },
         removeFromPlaylist: (state, action: PayloadAction<string>) => {
-            state.songs = state.songs.filter(song => song.id !== action.payload);
+            state.songs = state.songs.filter(song => song.name !== action.payload);
         },
-    }
+    },
 });
 
 export const { addToPlaylist, removeFromPlaylist } = playlistSlice.actions;
