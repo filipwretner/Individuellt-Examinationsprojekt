@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Artist } from "../../Utilities/types";
 
 const SearchArtists: React.FC<{ artists: Artist[] }> = ({ artists }) => {
@@ -8,7 +9,9 @@ const SearchArtists: React.FC<{ artists: Artist[] }> = ({ artists }) => {
             <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {artists.slice(0, 6).map((artist, index) => (
                     <li key={index} className="p-4 border rounded-lg hover:shadow-lg transition-shadow">
+                    <Link to={`/artist/${encodeURIComponent(artist.name)}`}>
                         {artist.name}
+                    </Link>
                     </li>
                 ))}
             </ul>
@@ -16,4 +19,4 @@ const SearchArtists: React.FC<{ artists: Artist[] }> = ({ artists }) => {
     );
 };
 
-export default SearchArtists;
+export default SearchArtists; 

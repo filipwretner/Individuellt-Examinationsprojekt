@@ -10,7 +10,7 @@ const ArtistDetails: React.FC = () => {
 
     const { id } = useParams();
     const dispatch = useDispatch<AppDispatch>();
-    const artist = useSelector((state: RootState) => state.artist.artist);
+    const artist = useSelector((state: RootState) => state.artist.artistAlbums);
     const artistSongs = useSelector((state: RootState) => state.artist.artistSongs);
 
     useEffect(() => {

@@ -7,7 +7,7 @@ const initialState: MusicState = {
   similarSongs: null,
   trending: null,
   searchResults: null,
-  artist: null,
+  artistAlbums: null,
   artistSongs: null,
   album: null,
   status: "idle",
@@ -28,7 +28,7 @@ const artistSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getArtistDetails.fulfilled, (state, action) => {
-                state.artist = action.payload;
+                state.artistAlbums = action.payload;
             })
             .addCase(getArtistTopSongs.fulfilled, (state, action) => {
                 state.artistSongs = action.payload;

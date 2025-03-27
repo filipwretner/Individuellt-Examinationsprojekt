@@ -4,9 +4,8 @@ export interface Song {
 }
 
 export interface Album {
-    title: string;
+    name: string;
     artist: { name: string; };
-    songs: { song: Song[] };
 }
 
 export interface Artist {
@@ -25,7 +24,7 @@ export interface MusicState {
     similarSongs: SimilarSongsResponse | null;
     trending: TrendingMusicResponse | null;
     searchResults: any;
-    artist: any;
+    artistAlbums: any;
     artistSongs: any;
     album: any;
     status: "idle" | "loading" | "failed";
