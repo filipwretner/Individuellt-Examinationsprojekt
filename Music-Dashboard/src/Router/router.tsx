@@ -10,7 +10,7 @@ const AppRouter: React.FC = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/search" element={<Search />} />
-                <Route path="/album/:id" element={<AlbumDetails />} />
+                <Route path="/album/:artist/:album" element={<AlbumDetails />} />
                 <Route path="/artist/:id" element={<ArtistDetails />} />
             </Routes>
     );

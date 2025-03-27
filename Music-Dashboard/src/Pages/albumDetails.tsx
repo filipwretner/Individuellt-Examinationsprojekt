@@ -8,25 +8,24 @@ import AddButton from "../Components/Global/AddButton";
 
 const AlbumDetails: React.FC = () => {
 
-    const { id } = useParams<{ id: string }>();
+    const { artist, album } = useParams<{ artist: string; album: string }>();
     const dispatch = useDispatch<AppDispatch>();
-    const album = useSelector((state: RootState) => state.album.album);
+    const currentAlbum = useSelector((state: RootState) => state.album.album);
 
     useEffect(() => {
-        if (id) {
-            dispatch(getAlbumDetails({ artist: "artistName", album: id }));
+        if (artist && album ) {
+            dispatch(getAlbumDetails({ artist: artist, album: album }));
         }
-    }, [id, dispatch]);
+    }, [artist, album, dispatch]);
 
     return (
         <div>
-            {album ? (
+            {currentAlbum ? (
                 <>
-                    <h2>{album.title}</h2>
-                    <p>{album.artist.name}</p>
-                    <img src={album.cover} alt={album.title} />
+                    <h2>{currentAlbum.title}</h2>
+                    <p>{currentAlbum.artist.name}</p>
                     <ul>
-                        {album.songs.map((song: Song, index: number) => (
+                        {currentAlbum.songs.map((song: Song, index: number) => (
                         <li key={index} className="p-4 border rounded-lg hover:shadow-lg transition-shadow">
                         <p className="font-semibold text-gray-700">{song.name}</p>
                         <AddButton song={song} />

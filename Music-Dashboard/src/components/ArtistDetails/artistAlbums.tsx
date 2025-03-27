@@ -10,7 +10,7 @@ const ArtistAlbums: React.FC<{ albums: Album[] | null }> = ({ albums }) => {
                 {Array.isArray(albums) && albums.length > 0 ? (
                     albums.map((album, index) => (
                         <div key={index}>
-                            <Link to={`/album/${encodeURIComponent(album.name)}`}>
+                            <Link to={`/album/${encodeURIComponent(album.artist.name)}/${encodeURIComponent(album.name)}`}>
                                 {album.name} - {album.artist.name}
                             </Link>
                         </div>

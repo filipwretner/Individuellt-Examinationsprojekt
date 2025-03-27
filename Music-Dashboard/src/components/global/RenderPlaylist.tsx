@@ -14,14 +14,14 @@ const RenderPlaylist: React.FC = () => {
     };
 
     return (
-        <div className="p-4 bg-white shadow-md rounded-lg">
-            <h2 className="text-2xl font-bold mb-4 text-gray-800">Playlist</h2>
+        <div className="p-6 bg-white shadow-md rounded-lg">
+            <h2 className="text-2xl font-bold mb-4 text-gray-800">📜 Playlist</h2>
             {playlist.length > 0 ? (
-                <ul className="space-y-2">
+                <ul className="space-y-3 max-h-96 overflow-y-auto">
                     {playlist.map((song, index) => (
                         <li
                             key={index}
-                            className="flex justify-between items-center p-2 border rounded-lg hover:shadow-lg transition-shadow"
+                            className="flex justify-between items-center p-3 border rounded-lg hover:shadow-lg transition-shadow"
                         >
                             <div>
                                 <p className="font-semibold text-gray-700">{song.name}</p>
@@ -31,7 +31,7 @@ const RenderPlaylist: React.FC = () => {
                                 onClick={() => handleRemove(song.name)}
                                 className="text-red-500 hover:text-red-700 font-bold"
                             >
-                                Remove
+                                🗑
                             </button>
                         </li>
                     ))}

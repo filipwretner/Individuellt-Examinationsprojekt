@@ -13,25 +13,27 @@ const TrendingMusic: React.FC = () => {
     }, [dispatch]);
 
     return (
-        <div className="p-4 bg-white shadow-md rounded-lg">
-        <h2 className="text-2xl font-bold mb-4 text-gray-800">Populär Musik</h2>
-        {trendingMusic ? (
-            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {trendingMusic.tracks?.track?.slice(0, 12).map((song: any) => (
-                    <li
-                        key={song.name}
-                        className="p-4 border rounded-lg hover:shadow-lg transition-shadow"
-                    >
-                        <p className="font-semibold text-gray-700">{song.name}</p>
-                        <p className="text-sm text-gray-500">{song.artist.name}</p>
-                        <AddButton song={song} />
-                    </li>
-                ))}
-            </ul>
-        ) : (
-            <p className="text-gray-500">Laddar...</p>
-        )}
-    </div>
+        <div className="p-6 bg-white shadow-md rounded-lg">
+            <h2 className="text-2xl font-bold mb-4 text-gray-800">🔥 Populär Musik</h2>
+            {trendingMusic ? (
+                <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {trendingMusic.tracks?.track?.slice(0, 12).map((song: any) => (
+                        <li
+                            key={song.name}
+                            className="p-4 border rounded-lg hover:shadow-lg transition-shadow flex flex-col justify-between"
+                        >
+                            <div>
+                                <p className="font-semibold text-gray-700">{song.name}</p>
+                                <p className="text-sm text-gray-500">{song.artist.name}</p>
+                            </div>
+                            <AddButton song={song}/>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p className="text-gray-500">Laddar...</p>
+            )}
+        </div>
     );
 };
 

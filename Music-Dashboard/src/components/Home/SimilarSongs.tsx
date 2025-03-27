@@ -12,21 +12,19 @@ const SimilarSongs: React.FC = () => {
         dispatch(getSimilarSongs());
     }, [dispatch]);
 
-    console.log(similarSongs);
-
     return (
-        <div className="p-4 bg-white shadow-md rounded-lg">
-            <h2 className="text-2xl font-bold mb-4 text-gray-800">Liknande Låtar</h2>
+        <div>
+            <h2 className="text-2xl font-bold mb-4 text-gray-900">Liknande Låtar</h2>
             {similarSongs ? (
-                <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {similarSongs.similartracks.track.slice(0, 12).map((song, index) => (
                         <li
                             key={index}
-                            className="p-4 border rounded-lg hover:shadow-lg transition-shadow"
+                            className="flex flex-col items-start p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white"
                         >
-                            <p className="font-semibold text-gray-700">{song.name}</p>
+                            <p className="font-semibold text-gray-800">{song.name}</p>
                             <p className="text-sm text-gray-500">{song.artist.name}</p>
-                            <AddButton song={song} />
+                            <AddButton song={song}/>
                         </li>
                     ))}
                 </ul>

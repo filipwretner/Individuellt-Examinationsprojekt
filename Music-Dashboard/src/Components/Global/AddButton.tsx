@@ -17,7 +17,7 @@ const AddButton: React.FC<AddButtonProps> = ({ song }) => {
     return (
         <button
             onClick={handleAdd}
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+            className="mt-2 w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1.5 px-4 rounded-lg text-center" 
         >
             Add to Playlist
         </button>
