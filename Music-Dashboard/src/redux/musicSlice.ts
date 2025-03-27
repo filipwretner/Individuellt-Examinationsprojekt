@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { MusicState } from '../Utilities/types';
 import { 
-    fetchNewReleases,
+    fetchSimilarSongs,
     fetchTrendingMusic,
     fetchSearchResults,
     fetchArtistData,
@@ -10,7 +10,7 @@ import {
 } from '../Utilities/apiClient';
 
 const initialState: MusicState = {
-  newReleases: null,
+  similarSongs: null,
   trending: null,
   searchResults: null,
   artist: null,
@@ -19,9 +19,9 @@ const initialState: MusicState = {
   status: "idle",
 }
 
-export const getNewReleases = createAsyncThunk("music/getNewReleases", async () => {
-  return await fetchNewReleases();
-})
+export const getSimilarSongs = createAsyncThunk("music/getSimilarSongs", async () => {
+  return await fetchSimilarSongs();
+});
 
 export const getTrendingMusic = createAsyncThunk("music/getTrending", async () => {
     return await fetchTrendingMusic();
@@ -49,8 +49,8 @@ const musicSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-          .addCase(getNewReleases.fulfilled, (state, action) => {
-            state.newReleases = action.payload;
+          .addCase(getSimilarSongs.fulfilled, (state, action) => {
+            state.similarSongs = action.payload;
           })
           .addCase(getTrendingMusic.fulfilled, (state, action) => {
             state.trending = action.payload;

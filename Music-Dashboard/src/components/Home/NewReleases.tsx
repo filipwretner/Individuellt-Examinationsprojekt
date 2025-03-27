@@ -1,24 +1,24 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getNewReleases } from "../../Redux/musicSlice";
+import { getSimilarSongs } from "../../Redux/musicSlice";
 import { RootState, AppDispatch } from "../../Redux/store";
 
-const NewReleases = () => {
+const SimilarSongs = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const newReleases = useSelector((state: RootState) => state.music.newReleases);
+    const similarSongs = useSelector((state: RootState) => state.music.similarSongs);
 
     useEffect(() => {
-        dispatch(getNewReleases());
+        dispatch(getSimilarSongs());
     }, [dispatch]);
 
     return (
         <div>
             <h2>Nya Album</h2>
-            {newReleases ? (
+            {similarSongs ? (
                 <ul>
-                    {newReleases.albums?.album?.slice(0, 10).map((album: any) => (
-                        <li key={album.id}>
-                            {album.name} {album.artists[0].name}
+                    {similarSongs.similartracks?.track?.slice(0, 10).map((song: any) => (
+                        <li key={song.id}>
+                            {song.name} {song.artists[0].name}
                         </li>
                     ))}
                 </ul>
@@ -29,4 +29,4 @@ const NewReleases = () => {
     );
 };
 
-export default NewReleases;
+export default SimilarSongs;

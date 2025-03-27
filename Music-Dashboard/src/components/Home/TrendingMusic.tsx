@@ -1,9 +1,9 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTrendingMusic } from "../../Redux/musicSlice";
 import { RootState, AppDispatch } from "../../Redux/store";
 
-const TrendingMusic = () => {
+const TrendingMusic: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const trendingMusic = useSelector((state: RootState) => state.music.trending);
 
@@ -16,7 +16,7 @@ const TrendingMusic = () => {
             <h2>Populär Musik</h2>
             {trendingMusic ? (   
             <ul>
-            {trendingMusic.songs?.song?.slice(0, 10).map((song: any) => (
+            {trendingMusic.tracks?.track?.slice(0, 10).map((song: any) => (
                 <li key={song.name}>
                     {song.name} {song.artist.name}
                 </li>

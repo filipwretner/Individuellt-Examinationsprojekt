@@ -8,7 +8,7 @@ const SearchSongs: React.FC<{ songs: Song[] }> = ({ songs }) => {
             <ul>
                 {songs.slice(0, 6).map((song, index) => (
                     <li key={index}>
-                        {song.title} - {song.artist.name}
+                        {song.name} - {song.artist.name}
                     </li>
                 ))}
             </ul>
