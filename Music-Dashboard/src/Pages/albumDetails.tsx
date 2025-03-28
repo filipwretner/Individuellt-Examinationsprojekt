@@ -28,10 +28,7 @@ const AlbumDetails: React.FC = () => {
                     <ul className="mt-4 space-y-2">
                         {currentAlbum.tracks && currentAlbum.tracks.length > 0 ? (
                             currentAlbum.tracks.map((song: Song, index: number) => (
-                                <li
-                                    key={index}
-                                    className="p-4 border rounded-lg hover:shadow-lg transition-shadow flex items-center justify-between"
-                                >
+                                <li key={index} className="p-4 border rounded-lg hover:shadow-lg transition-shadow flex items-center justify-between">
                                     <p className="font-semibold text-gray-700">{song.name}</p>
                                     <AddButton song={song} />
                                 </li>

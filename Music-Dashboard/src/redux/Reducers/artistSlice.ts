@@ -7,7 +7,6 @@ const initialState: MusicState = {
   similarSongs: null,
   trendingSongs: null,
   trendingArtists: null,
-  searchResults: null,
   artistAlbums: null,
   artistSongs: null,
   album: null,

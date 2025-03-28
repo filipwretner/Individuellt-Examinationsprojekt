@@ -29,7 +29,7 @@ const App: React.FC = () => {
 
             {/* Playlist Overlay for Small Screens */}
             {isPlaylistVisible && (
-                <div className="fixed inset-0 bg-white dark:bg-gray-900 dark:text-white z-50 p-4 overflow-y-auto shadow-lg">
+                <div className="fixed inset-0 bg-white z-50 p-4 overflow-y-auto shadow-lg">
                     <button
                         onClick={togglePlaylist}
                         className="text-red-500 font-bold mb-4"

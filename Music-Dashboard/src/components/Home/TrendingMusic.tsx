@@ -18,10 +18,7 @@ const TrendingMusic: React.FC = () => {
             {trendingMusic ? (
                 <div className="flex flex-col gap-2">
                     {trendingMusic.tracks?.track?.slice(0, 12).map((song: any, index: number) => (
-                        <div
-                            key={index}
-                            className="p-4 border rounded-lg hover:shadow-lg transition-shadow flex items-center justify-between"
-                        >
+                        <div key={index} className="p-4 border rounded-lg hover:shadow-lg transition-shadow flex items-center justify-between">
                             <div>
                                 <p className="font-semibold text-gray-700">{song.name}</p>
                                 <p className="text-sm text-gray-500">{song.artist.name}</p>

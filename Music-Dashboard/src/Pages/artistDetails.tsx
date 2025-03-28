@@ -23,7 +23,7 @@ const ArtistDetails: React.FC = () => {
 
     return (
         <div>
-            <h2>{id}</h2> 
+            <h2 className="text-2xl font-bold mb-4">{id}</h2> 
             <ArtistSongs songs={artistSongs} />
             <ArtistAlbums albums={artistAlbums} /> 
         </div>

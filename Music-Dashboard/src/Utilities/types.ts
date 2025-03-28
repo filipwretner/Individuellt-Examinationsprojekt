@@ -33,7 +33,6 @@ export interface MusicState {
     similarSongs: SimilarSongsResponse | null;
     trendingSongs: TrendingMusicResponse | null;
     trendingArtists: TrendingArtistsResponse | null;
-    searchResults: any;
     artistAlbums: any;
     artistSongs: any;
     album: any;
