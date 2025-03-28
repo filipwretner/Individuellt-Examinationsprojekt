@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import TrendingMusic from "../Components/Home/TrendingMusic";
 import SimilarSongs from "../Components/Home/SimilarSongs";
+import TrendingArtists from "../Components/Home/TrendingArtists";
 
 const Home: React.FC = () => {
     return (
@@ -9,6 +10,7 @@ const Home: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="md:col-span-2 space-y-6">
                         <TrendingMusic />
+                        <TrendingArtists />
                         <SimilarSongs />
                     </div>
                 </div>

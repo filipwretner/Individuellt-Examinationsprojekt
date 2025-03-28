@@ -5,7 +5,8 @@ import { fetchArtistAlbums, fetchArtistSongs } from "../../Utilities/API/artistA
 
 const initialState: MusicState = {
   similarSongs: null,
-  trending: null,
+  trendingSongs: null,
+  trendingArtists: null,
   searchResults: null,
   artistAlbums: null,
   artistSongs: null,

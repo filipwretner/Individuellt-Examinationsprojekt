@@ -6,7 +6,7 @@ import AddButton from "../Global/AddButton";
 
 const TrendingMusic: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const trendingMusic = useSelector((state: RootState) => state.home.trending);
+    const trendingMusic = useSelector((state: RootState) => state.home.trendingSongs);
 
     useEffect(() => {
         dispatch(getTrendingMusic());
@@ -18,10 +18,7 @@ const TrendingMusic: React.FC = () => {
             {trendingMusic ? (
                 <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {trendingMusic.tracks?.track?.slice(0, 12).map((song: any) => (
-                        <li
-                            key={song.name}
-                            className="p-4 border rounded-lg hover:shadow-lg transition-shadow flex flex-col justify-between"
-                        >
+                        <li key={song.name}className="p-4 border rounded-lg hover:shadow-lg transition-shadow flex flex-col justify-between">
                             <div>
                                 <p className="font-semibold text-gray-700">{song.name}</p>
                                 <p className="text-sm text-gray-500">{song.artist.name}</p>

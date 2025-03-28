@@ -14,7 +14,7 @@ const SimilarSongs: React.FC = () => {
 
     return (
         <div>
-            <h2 className="text-2xl font-bold mb-4 text-gray-900">Liknande Låtar</h2>
+            <h2 className="text-2xl font-bold mb-4 text-gray-900">Eftersom du lyssnade på Tesseract - War of Being</h2>
             {similarSongs ? (
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {similarSongs.similartracks.track.slice(0, 12).map((song, index) => (

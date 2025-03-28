@@ -25,9 +25,14 @@ export interface TrendingMusicResponse {
     tracks: { track: Song[] };
 }
 
+export interface TrendingArtistsResponse {
+    artists: { artist: Artist[] };
+}
+
 export interface MusicState {
     similarSongs: SimilarSongsResponse | null;
-    trending: TrendingMusicResponse | null;
+    trendingSongs: TrendingMusicResponse | null;
+    trendingArtists: TrendingArtistsResponse | null;
     searchResults: any;
     artistAlbums: any;
     artistSongs: any;

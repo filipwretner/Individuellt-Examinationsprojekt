@@ -7,16 +7,15 @@ const RenderPlaylist: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const playlist = useSelector((state: RootState) => state.playlist.songs);
 
-    // State to track the song being considered for removal
     const [songToRemove, setSongToRemove] = useState<string | null>(null);
 
     const handleRemove = (songName: string) => {
         dispatch(removeFromPlaylist(songName));
-        setSongToRemove(null); // Reset the state after removal
+        setSongToRemove(null);
     };
 
     return (
-        <div className="p-6 bg-white shadow-md rounded-lg">
+        <div className="p-6 bg-white shadow-md rounded-lg ">
             <h2 className="text-2xl font-bold mb-4 text-gray-800">📜 Playlist</h2>
             {playlist.length > 0 ? (
                 <ul className="space-y-3 max-h-96 overflow-y-auto">

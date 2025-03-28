@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { MusicState } from '../../Utilities/types';
-import { fetchSimilarSongs, fetchTrendingMusic} from "../../Utilities/API/homeApi";
+import { fetchSimilarSongs, fetchTrendingMusic, fetchTrendingArtists} from "../../Utilities/API/homeApi";
 
 const initialState: MusicState = {
   similarSongs: null,
-  trending: null,
+  trendingSongs: null,
+  trendingArtists: null,
   searchResults: null,
   artistAlbums: null,
   artistSongs: null,
@@ -20,8 +21,12 @@ export const getTrendingMusic = createAsyncThunk("trending/getTrendingMusic", as
     return await fetchTrendingMusic();
 });
 
+export const getTrendingArtists = createAsyncThunk("trending/getTrendingArtists", async () => {
+    return await fetchTrendingArtists();
+});
+
 const homeSlice = createSlice({
-    name: "similarSongs",
+    name: "home",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
@@ -30,7 +35,10 @@ const homeSlice = createSlice({
             state.similarSongs = action.payload;
         })
         .addCase(getTrendingMusic.fulfilled, (state, action) => {
-            state.trending = action.payload;
+            state.trendingSongs = action.payload;
+        })
+        .addCase(getTrendingArtists.fulfilled, (state, action) => {
+            state.trendingArtists = action.payload;
         });
     },
 });

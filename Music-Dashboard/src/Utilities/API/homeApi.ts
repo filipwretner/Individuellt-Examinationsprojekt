@@ -21,3 +21,14 @@ export const fetchSimilarSongs = async () => {
     
     return response.json(); 
 };
+
+export const fetchTrendingArtists = async () => {
+    
+    const response = await fetch(
+        `${BASE_URL}?method=chart.getTopArtists&api_key=${API_KEY}&format=json`
+    );
+    if (!response.ok) {
+        throw new Error("Failed to fetch trending artists");
+    }
+    return response.json();
+}
