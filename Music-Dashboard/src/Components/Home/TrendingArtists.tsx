@@ -13,20 +13,23 @@ const TrendingArtists: React.FC = () => {
     }, [dispatch]);
 
     return (
-        <div className="p-6 bg-white shadow-md rounded-lg">
+        <div className="p-6 bg-white dark:bg-gray-900 dark:text-white shadow-md rounded-lg">
             <h2 className="text-2xl font-bold mb-4 text-gray-800">🔥 Heta Artister</h2>
             {trendingArtists ? (
-                <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                     {trendingArtists.artists.artist.slice(0, 12).map((artist: any) => (
-                        <li key={artist.name} className="p-4 border rounded-lg hover:shadow-lg transition-shadow flex flex-col justify-between">
+                        <div
+                            key={artist.name}
+                            className="p-4 border rounded-lg hover:shadow-lg transition-shadow text-center"
+                        >
                             <Link to={`/artist/${encodeURIComponent(artist.name)}`}>
                                 <p className="font-semibold text-gray-700">{artist.name}</p>
                             </Link>
-                        </li>
-            ))}
-                </ul>
+                        </div>
+                    ))}
+                </div>
             ) : (
-                <p className="font-semibold text-gray-700">Laddar...</p>
+                <p className="text-gray-500">Laddar...</p>
             )}
         </div>
     );

@@ -30,7 +30,7 @@ const AlbumDetails: React.FC = () => {
                             currentAlbum.tracks.map((song: Song, index: number) => (
                                 <li
                                     key={index}
-                                    className="p-4 border rounded-lg hover:shadow-lg transition-shadow"
+                                    className="p-4 border rounded-lg hover:shadow-lg transition-shadow flex items-center justify-between"
                                 >
                                     <p className="font-semibold text-gray-700">{song.name}</p>
                                     <AddButton song={song} />

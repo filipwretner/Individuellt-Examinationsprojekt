@@ -8,13 +8,11 @@ import SearchAlbums from "../Components/Search/searchAlbums";
 import SearchArtists from "../Components/Search/searchArtists";
 
 const Search: React.FC = () => {
-
     const dispatch = useDispatch<AppDispatch>();
     const [searchParams] = useSearchParams();
     const query = searchParams.get("query") || "";
     const { tracks, albums, artists } = useSelector((state: RootState) => state.search.searchResults);
     const status  = useSelector((state: RootState) => state.search.status);
-    console.log("search albums", albums);
 
     useEffect(() => {
         if (query) {
@@ -28,14 +26,12 @@ const Search: React.FC = () => {
             {status === "loading" ? (
                 <p className="text-gray-500">Laddar...</p>
             ) : (
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="flex flex-col gap-8">
                     <div>
                         <SearchSongs songs={tracks} />
                     </div>
-                    <div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <SearchAlbums albums={albums} />
-                    </div>
-                    <div>
                         <SearchArtists artists={artists} />
                     </div>
                 </div>

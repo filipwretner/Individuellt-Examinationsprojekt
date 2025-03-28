@@ -15,10 +15,10 @@ const RenderPlaylist: React.FC = () => {
     };
 
     return (
-        <div className="p-6 bg-white shadow-md rounded-lg ">
+        <div className="p-6 bg-white dark:bg-gray-900 dark:text-white shadow-md rounded-lg h-full flex flex-col">
             <h2 className="text-2xl font-bold mb-4 text-gray-800">📜 Playlist</h2>
             {playlist.length > 0 ? (
-                <ul className="space-y-3 max-h-96 overflow-y-auto">
+                <ul className="space-y-3 overflow-y-auto flex-grow">
                     {playlist.map((song, index) => (
                         <li
                             key={index}

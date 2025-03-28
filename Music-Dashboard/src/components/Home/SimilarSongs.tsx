@@ -16,18 +16,20 @@ const SimilarSongs: React.FC = () => {
         <div>
             <h2 className="text-2xl font-bold mb-4 text-gray-900">Eftersom du lyssnade på Tesseract - War of Being</h2>
             {similarSongs ? (
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {similarSongs.similartracks.track.slice(0, 12).map((song, index) => (
-                        <li
+                <div className="flex flex-col gap-2">
+                    {similarSongs.similartracks.track.slice(0, 12).map((song: any, index: number) => (
+                        <div
                             key={index}
-                            className="flex flex-col items-start p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white"
+                            className="p-4 border rounded-lg hover:shadow-lg transition-shadow flex items-center justify-between"
                         >
-                            <p className="font-semibold text-gray-800">{song.name}</p>
-                            <p className="text-sm text-gray-500">{song.artist.name}</p>
-                            <AddButton song={song}/>
-                        </li>
+                            <div>
+                                <p className="font-semibold text-gray-700">{song.name}</p>
+                                <p className="text-sm text-gray-500">{song.artist.name}</p>
+                            </div>
+                            <AddButton song={song} />
+                        </div>
                     ))}
-                </ul>
+                </div>
             ) : (
                 <p className="text-gray-500">Laddar...</p>
             )}

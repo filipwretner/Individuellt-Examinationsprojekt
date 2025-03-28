@@ -5,13 +5,15 @@ import AddButton from "../Global/AddButton";
 const ArtistSongs: React.FC<{ songs: Song[] | null }> = ({ songs }) => {
     return (
         <div>
-            <h2>Top Songs</h2>
+            <h2>Största Hits</h2>
             {Array.isArray(songs) && songs.length > 0 ? (
                 <ul>
                     {songs.slice(0, 6).map((song, index) => (
-                        <li key={index} className="p-4 border rounded-lg hover:shadow-lg transition-shadow">
-                        <p className="font-semibold text-gray-700">{song.name}</p>
-                        <p className="text-sm text-gray-500">{song.artist.name}</p>
+                        <li key={index} className="p-4 border rounded-lg hover:shadow-lg transition-shadow flex items-center justify-between">
+                            <div>
+                            <p className="font-semibold text-gray-700">{song.name}</p>
+                            <p className="text-sm text-gray-500">{song.artist.name}</p>
+                            </div>
                         <AddButton song={song} />
                     </li>
                     ))}
