@@ -14,6 +14,7 @@ const Search: React.FC = () => {
     const query = searchParams.get("query") || "";
     const { tracks, albums, artists } = useSelector((state: RootState) => state.search.searchResults);
     const status  = useSelector((state: RootState) => state.search.status);
+    console.log("search albums", albums);
 
     useEffect(() => {
         if (query) {

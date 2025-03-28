@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../Redux/store";
 import { removeFromPlaylist } from "../../Redux/Reducers/playlistSlice";
@@ -7,10 +7,12 @@ const RenderPlaylist: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const playlist = useSelector((state: RootState) => state.playlist.songs);
 
+    // State to track the song being considered for removal
+    const [songToRemove, setSongToRemove] = useState<string | null>(null);
+
     const handleRemove = (songName: string) => {
-        if (window.confirm(`Are you sure you want to remove "${songName}" from the playlist?`)) {
-            dispatch(removeFromPlaylist(songName));
-        }
+        dispatch(removeFromPlaylist(songName));
+        setSongToRemove(null); // Reset the state after removal
     };
 
     return (
@@ -27,12 +29,31 @@ const RenderPlaylist: React.FC = () => {
                                 <p className="font-semibold text-gray-700">{song.name}</p>
                                 <p className="text-sm text-gray-500">{song.artist.name}</p>
                             </div>
-                            <button
-                                onClick={() => handleRemove(song.name)}
-                                className="text-red-500 hover:text-red-700 font-bold"
-                            >
-                                🗑
-                            </button>
+                            <div className="flex items-center space-x-2">
+                                {songToRemove === song.name ? (
+                                    <>
+                                        <button
+                                            onClick={() => handleRemove(song.name)}
+                                            className="text-red-500 hover:text-red-700 font-bold"
+                                        >
+                                            Confirm
+                                        </button>
+                                        <button
+                                            onClick={() => setSongToRemove(null)}
+                                            className="text-gray-500 hover:text-gray-700 font-bold"
+                                        >
+                                            Cancel
+                                        </button>
+                                    </>
+                                ) : (
+                                    <button
+                                        onClick={() => setSongToRemove(song.name)}
+                                        className="text-red-500 hover:text-red-700 font-bold"
+                                    >
+                                        🗑 Remove
+                                    </button>
+                                )}
+                            </div>
                         </li>
                     ))}
                 </ul>

@@ -8,6 +8,11 @@ export interface Album {
     artist: { name: string; };
 }
 
+export interface SearchAlbum {
+    name: string;
+    artist: string;
+}
+
 export interface Artist {
     name: string;
 }

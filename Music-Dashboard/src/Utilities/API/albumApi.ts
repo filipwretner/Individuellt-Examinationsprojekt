@@ -8,5 +8,16 @@ export const fetchAlbumData = async (artist: string, album: string) => {
     if (!response.ok) {
         throw new Error("Failed to fetch album data");
     }
-    return response.json();   
+
+    const data = await response.json();
+
+    const tracks = data.album.tracks
+    ? Array.isArray(data.album.tracks.track)
+    ? data.album.tracks.track : [data.album.tracks.track] : [];
+    
+    return {
+    titel: data.album.name,
+    artist: data.album.artist,
+    tracks,
+};  
 }

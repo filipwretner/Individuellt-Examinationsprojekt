@@ -25,6 +25,7 @@ const albumSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getAlbumDetails.fulfilled, (state, action) => {
+            console.log("Fetched album data:", action.payload);
             state.album = action.payload;
         });
     },
